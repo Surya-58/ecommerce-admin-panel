@@ -1,0 +1,77 @@
+import React from 'react'
+import '../styles/Products.css'
+
+const ProductForm = ({
+    name,
+    setName,
+    quantity,
+    setQuantity,    
+    unit,
+    setUnit,
+    price,
+    setPrice,
+    handleAddProduct,
+    handleUpdate,
+    message,
+    editId,
+    handleGetProducts,
+    search,
+    setSearch
+    
+}) => {
+  return (
+    <div>
+        <label className="label">Product Name</label>
+        <br/>
+        <input 
+        className="input"
+        type='text' 
+        placeholder='Enter product name'
+        value={name}
+        onChange={(e)=>setName(e.target.value)}
+         />
+        <br/>
+
+        <label className="label">Quantity</label>
+        <br />
+        <input 
+        className="input"
+        type="number" 
+        placeholder="Enter Quantity"
+        value={quantity}
+        onChange={(e)=>setQuantity(e.target.value)}/>
+        <br/>
+
+        <label className="label">Unit</label>
+        <br/>
+        <select
+        className="input"
+        value={unit}
+        onChange={(e)=>setUnit(e.target.value)}>
+          <option> Select Unit</option>
+          <option>ml</option>
+          <option>L</option>
+          <option>kg</option>
+          <option>g</option>
+        </select>
+        <br/>
+
+        <label className="label">Price</label>
+        <br/>
+        <input 
+        className="input"
+        type="number" 
+        placeholder='Enter Price'
+        value={price}
+        onChange={(e)=>setPrice(e.target.value)} />
+        <br/>
+        <button className="btn-primary" onClick={editId ? handleUpdate : handleAddProduct}>{editId ? "Update product" : "Add product"}</button>
+
+        
+      
+        <p className="message">{message}</p>
+    </div>
+  )
+}
+
+export default ProductForm
