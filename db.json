@@ -226,6 +226,6 @@
     "total": 225,
     "status": "Delivered"
   }
-  ]
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
