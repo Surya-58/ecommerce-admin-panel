@@ -1,6 +1,61 @@
 const PRODUCT_URL = "http://localhost:3000/products";
 const CATEGORY_URL = "http://localhost:3000/categories";
 const USER_URL = "http://localhost:3000/users";
+const ORDER_URL = "http://localhost:3000/orders"
+
+export const getOrders = async() =>{
+  try {
+    const response = await fetch(ORDER_URL)
+    return await response.json()
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+export const addOrder = async(order) => {
+  try {
+    const response = await fetch(ORDER_URL,{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(order)
+    })
+    return await response.json()
+
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+export const updateOrder = async(id,order) => {
+  try {
+    const response = await fetch(`${ORDER_URL}/${id}`,{
+      method : "PUT",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(order)
+    })
+    return await response.json()
+    
+  } catch (error) {
+    console.log(error);   
+  }
+}
+export const deleteOrder = async(id) =>{
+  try {
+    const response = await fetch(`${ORDER_URL}/${id}`,{
+      method : "DELETE"
+    })
+    return await response.json()
+  } 
+  catch (error) {
+    console.log(error);
+    
+  }
+}
 
 export const getUsers = async () => {
   try {
