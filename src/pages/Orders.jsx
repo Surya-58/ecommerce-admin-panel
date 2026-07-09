@@ -24,6 +24,8 @@ const Orders = () => {
   const [message, setMessage] = useState("")
   const [editId, setEditId] = useState(null)
 
+  const [total, setTotal] = useState(0)
+
   const handleGetOrders = async() => {
     const data  = await getOrders()
     console.log("Orders :",data );
@@ -48,6 +50,47 @@ const Orders = () => {
     handleGetUsers()
   }, [])
 
+  useEffect(()=>{
+    const selectedProduct = products.find(
+      (item) => item.name === product
+    )
+    if (selectedProduct) {
+      setPrice(selectedProduct.price)
+    }
+  },[product, products])
+
+  useEffect(() =>{
+    setTotal(Number(price) * Number(quantity))
+  },[price,quantity])
+
+  const handleAddOrder = async() =>{
+    try {
+      const order = {
+        customer,
+        product,
+        quantity,
+        price,
+        total,
+        status,
+      }
+      const data = await addOrder(order)
+      console.log(data);
+
+      setMessage("Order Added Successfully")
+      handleGetOrders()
+
+      setCustomer("")
+      setProduct("")
+      setPrice("")
+      setQuantity("")
+      setTotal("")
+      setStatus("Pending")
+
+    } catch (error) {
+      console.log(error);      
+    }
+  }
+
   return (
     <div>
       <OrderForm 
@@ -62,6 +105,9 @@ const Orders = () => {
       setQuantity={setQuantity}
       price={price}
       setPrice={setPrice}
+      total={total}
+
+      handleAddOrder={handleAddOrder}
        />
     </div>
   )

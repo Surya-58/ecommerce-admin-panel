@@ -11,6 +11,8 @@ const OrderForm = ({
   setQuantity,
   price,
   setPrice,
+  total,
+  handleAddOrder,
 }) => {
   return (
     <div>
@@ -59,6 +61,32 @@ const OrderForm = ({
       placeholder="Enter Quantity"
       />
       <br />
+
+      <label className="label">Price</label>
+      <br />
+
+      <input 
+      type="number" 
+      className="input"
+      value={price}
+      readOnly
+       />
+       <br />
+
+       <label className="label">Total</label>
+       <br />
+
+       <input 
+       type="number" 
+       className="input"
+       value={total}
+       readOnly />
+       <br />
+
+       <button 
+       className="btn-primary"
+       onClick={handleAddOrder}
+       >Add Order</button>
     </div>
   );
 };
