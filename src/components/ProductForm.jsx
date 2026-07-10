@@ -16,7 +16,9 @@ const ProductForm = ({
     editId,
     handleGetProducts,
     search,
-    setSearch
+    setSearch,
+    image,
+    setImage,
     
 }) => {
   return (
@@ -65,11 +67,19 @@ const ProductForm = ({
         value={price}
         onChange={(e)=>setPrice(e.target.value)} />
         <br/>
-        <button className="btn-primary" onClick={editId ? handleUpdate : handleAddProduct}>{editId ? "Update product" : "Add product"}</button>
+        <label className="label">Image</label>
+        <br />
 
-        
+        <input type="text" className="input" 
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
+        placeholder='Enter image URL' />
+        <br />
+        <button className="btn-primary" onClick={editId ? handleUpdate : handleAddProduct}>{editId ? "Update product" : "Add product"}</button>
       
         <p className="message">{message}</p>
+        
+        
     </div>
   )
 }

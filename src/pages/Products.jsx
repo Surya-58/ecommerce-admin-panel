@@ -22,6 +22,8 @@ const Products = () => {
   const [sortOrder, setSortOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const productPerPage = 5;
+  const [image, setImage] = useState("")
+  const [category, setCategory] = useState("")
 
   const filteredProducts = products.filter((product) => {
     const matchSearch = product.name
@@ -72,6 +74,8 @@ const Products = () => {
         quantity,
         unit,
         price,
+        category,
+        image,
       };
       const data = await updateProduct(editId, product);
       console.log(data);
@@ -84,6 +88,8 @@ const Products = () => {
       setUnit("");
       setPrice("");
       setEditId(null);
+      setImage("")
+      setCategory("")
     } catch (error) {
       console.log(error);
     }
@@ -95,6 +101,8 @@ const Products = () => {
     setQuantity(product.quantity);
     setUnit(product.unit);
     setPrice(product.price);
+    setImage(product.image);
+    setCategory(product.category);
   };
 
   const handleGetProducts = async () => {
@@ -114,6 +122,8 @@ const Products = () => {
         quantity,
         unit,
         price,
+        category,
+        image,
       };
 
       const data = await addProduct(product);
@@ -125,6 +135,8 @@ const Products = () => {
       setQuantity("");
       setUnit("");
       setPrice("");
+      setImage("")
+      setCategory("")
     } catch (error) {
       console.log(error);
     }
@@ -154,6 +166,10 @@ const Products = () => {
           handleAddProduct={handleAddProduct}
           handleUpdate={handleUpdate}
           handleGetProducts={handleGetProducts}
+          image={image}
+          setImage={setImage}
+          category={category}
+          setCategory={setCategory}
         />
         <label className="label">Search Product</label>
         <br />

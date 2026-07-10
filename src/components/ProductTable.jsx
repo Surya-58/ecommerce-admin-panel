@@ -13,6 +13,7 @@ const ProductTable = (
         <table className="table">
           <thead>
             <tr>
+              <th className="th">Image</th>
               <th className="th" >Product</th>
               <th className="th">Quantity</th>
               <th className="th">Unit</th>
@@ -24,6 +25,18 @@ const ProductTable = (
             {
               products.map((product)=>(
                 <tr key={product.id}>
+                  <td className="td">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      width="60"
+                      height="60"
+                      style={{
+                        borderRadius: "8px",
+                        objectFit : "cover"
+                      }}
+                     />
+                  </td>
                   <td className="td">{product.name}</td>
                   <td className="td">{product.quantity}</td>
                   <td className="td">{product.unit}</td>
