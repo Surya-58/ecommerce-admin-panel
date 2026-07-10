@@ -26,6 +26,8 @@ const Orders = () => {
 
   const [total, setTotal] = useState(0);
 
+  const [statusFilter, setStatusFilter] = useState("All")
+
   const handleGetOrders = async () => {
     const data = await getOrders();
     console.log("Orders :", data);
@@ -137,6 +139,8 @@ const Orders = () => {
     }
   };
 
+  const filteredOrder = statusFilter === "All" ? orders : orders.filter((order)=> order.status === statusFilter)
+
   return (
     <div>
       <OrderForm
@@ -157,9 +161,20 @@ const Orders = () => {
         handleUpdateOrder={handleUpdateOrder}
         editId={editId}
       />
+      <select 
+      className="input"
+      value={statusFilter}
+      onChange={(e)=>setStatusFilter(e.target.value)}>
+        <option value="All">All Status</option>
+        <option value="Pending">Pending</option>
+        <option value="Processing">Processing</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
 
       <OrderTable
-        orders={orders}
+        orders={filteredOrder}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
         
