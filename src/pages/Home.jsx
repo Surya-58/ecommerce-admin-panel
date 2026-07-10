@@ -32,6 +32,10 @@ const Home = () => {
 
   },[])
 
+  const revenue = orders.reduce((acc,order) => {
+    return acc + order.total;
+  }, 0)
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -40,6 +44,7 @@ const Home = () => {
         <DashboardCard title="Orders" value={orders.length} />
         <DashboardCard title="Users" value={users.length} />
         <DashboardCard title="Categories" value={categories.length} />
+        <DashboardCard title="Revenue" value={`₹${revenue}`} />
       </div>
     </div>
   );
