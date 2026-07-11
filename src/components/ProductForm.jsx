@@ -19,6 +19,8 @@ const ProductForm = ({
     setSearch,
     image,
     setImage,
+    category,
+    setCategory,
     
 }) => {
   return (
@@ -34,6 +36,21 @@ const ProductForm = ({
          />
         <br/>
 
+        <label className="label">Category</label>
+        <br/>
+        <select className="input"
+        value={category}
+        onChange={(e)=>setCategory(e.target.value)}>
+          <option value="">Select Category</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Beverages">Beverages</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Personal">Personal</option>
+          <option value="Household">Household</option>
+        </select>
+        <br />
+
+    
         <label className="label">Quantity</label>
         <br />
         <input 
