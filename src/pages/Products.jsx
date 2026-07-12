@@ -24,6 +24,7 @@ const Products = () => {
   const productPerPage = 5;
   const [image, setImage] = useState("")
   const [category, setCategory] = useState("")
+  const [stock, setStock] = useState("")
 
   const filteredProducts = products.filter((product) => {
     const matchSearch = product.name
@@ -76,6 +77,7 @@ const Products = () => {
         price,
         category,
         image,
+        stock,
       };
       const data = await updateProduct(editId, product);
       console.log(data);
@@ -90,6 +92,7 @@ const Products = () => {
       setEditId(null);
       setImage("")
       setCategory("")
+      setStock("")
     } catch (error) {
       console.log(error);
     }
@@ -103,6 +106,7 @@ const Products = () => {
     setPrice(product.price);
     setImage(product.image);
     setCategory(product.category);
+    setStock(product.stock)
   };
 
   const handleGetProducts = async () => {
@@ -124,6 +128,7 @@ const Products = () => {
         price,
         category,
         image,
+        stock,
       };
 
       const data = await addProduct(product);
@@ -137,6 +142,7 @@ const Products = () => {
       setPrice("");
       setImage("")
       setCategory("")
+      setStock("")
     } catch (error) {
       console.log(error);
     }
@@ -170,6 +176,9 @@ const Products = () => {
           setImage={setImage}
           category={category}
           setCategory={setCategory}
+          stock={stock}
+          setStock={setStock}
+
         />
         <label className="label">Search Product</label>
         <br />

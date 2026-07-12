@@ -21,6 +21,8 @@ const ProductForm = ({
     setImage,
     category,
     setCategory,
+    stock,
+    setStock,
     
 }) => {
   return (
@@ -60,6 +62,17 @@ const ProductForm = ({
         value={quantity}
         onChange={(e)=>setQuantity(e.target.value)}/>
         <br/>
+
+        <label className="label">Stock</label>
+        <br />
+        <input 
+        type="number"
+        className="input"
+        placeholder='Enter the Stock'
+        value={stock}
+        onChange={(e)=>setStock(e.target.value)}
+         />
+         <br />
 
         <label className="label">Unit</label>
         <br/>

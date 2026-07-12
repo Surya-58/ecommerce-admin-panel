@@ -12,15 +12,14 @@
       "featured": true
     },
     {
-      "id": "2",
       "name": "Fortune Sunflower Oil",
       "quantity": 1,
       "unit": "L",
       "price": 185,
       "category": "Groceries",
       "image": "https://picsum.photos/100?2",
-      "stock": 48,
-      "featured": true
+      "stock": "55",
+      "id": "2"
     },
     {
       "id": "3",
@@ -219,6 +218,15 @@
       "image": "https://picsum.photos/100?20",
       "stock": 30,
       "featured": false
+    },
+    {
+      "name": "Milk Arokya",
+      "quantity": "1",
+      "unit": "L",
+      "price": "50",
+      "category": "Groceries",
+      "image": "https://picsum.photos/100?20",
+      "id": "rvobdSSUyCs"
     }
   ],
   "categories": [
